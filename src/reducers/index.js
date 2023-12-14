@@ -2,7 +2,7 @@ import data from '../data/gifs';
 import { FETCH_START, FETCH_SUCCESS } from '../actions';
 
 const initialState = {
-     gifs: [],
+     gifs: data,
      loading: false,
      error: ''
 }
@@ -22,6 +22,12 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: ''
             }
+        // case FETCH_FAIL:
+        //     return {
+        //         ...state,
+        //         loading: true,
+        //         error: "There was an error loading gifs"
+        //     }
         default:
             return(state)
     }

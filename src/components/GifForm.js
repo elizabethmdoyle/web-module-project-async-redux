@@ -1,11 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { connect } from 'react-redux';
 
-const GifForm = () => {
+import { getGifs } from '../actions';
+
+const GifForm = (props) => {
+
+    const {getGifs} = props;
+
+    const [searchTerm, setSearchTerm] = useState('')
     
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('clicked it')
+        getGifs(searchTerm);
+    }
+     const handleChange = (e) => {
+        console.log(e.target.value)
+        setSearchTerm(e.target.value)
+     }
+
     return (
         <div>
-            <form> 
-        <input />
+            <form onSubmit={handleSubmit}> 
+        <input onChange={handleChange}/>
         <button>Search</button>
       </form>
         </div>
@@ -14,6 +31,6 @@ const GifForm = () => {
 }
 
 
-export default GifForm
+export default connect(null, {getGifs})(GifForm)
 
 
